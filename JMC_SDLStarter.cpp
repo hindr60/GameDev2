@@ -3,6 +3,7 @@
 #include <SDL3/SDL.h>
 #include <SDL3/SDL_main.h>
 #include <iostream>
+#include "PointerDemo.h"
 
 using namespace std;
 
@@ -16,7 +17,7 @@ static SDL_Renderer* renderer = NULL;
 static SDL_Texture* texture = NULL;
 
 static const char* ProjectName = "JMC Starter Project";
-
+static PointerDemo* pointerDemo;
 
 /* This function runs once at startup. */
 SDL_AppResult SDL_AppInit(void** appstate, int argc, char* argv[])
@@ -32,6 +33,8 @@ SDL_AppResult SDL_AppInit(void** appstate, int argc, char* argv[])
         SDL_Log("Couldn't create window/renderer: %s", SDL_GetError());
         return SDL_APP_FAILURE;
     }
+
+    pointerDemo->DoDemo();
 
     return SDL_APP_CONTINUE;  /* carry on with the program! */
 }
@@ -80,23 +83,6 @@ SDL_AppResult SDL_AppIterate(void* appstate)
     const int charsize = SDL_DEBUG_TEXT_FONT_CHARACTER_SIZE;
 
     /* as you can see from this, rendering draws over whatever was drawn before it. */
-    SDL_SetRenderDrawColor(renderer, 0, 0, 0, SDL_ALPHA_OPAQUE);  /* black, full alpha */
-    SDL_RenderClear(renderer);  /* start with a blank canvas. */
-
-    SDL_SetRenderDrawColor(renderer, 255, 255, 255, SDL_ALPHA_OPAQUE);  /* white, full alpha */
-    SDL_RenderDebugText(renderer, 272, 100, "Brendan is totally the best lecturer");
-    SDL_RenderDebugText(renderer, 224, 150, "The sentence before isn't that important\n no need to squint to see");
-
-
-    SDL_SetRenderDrawColor(renderer, 204, 0, 153, SDL_ALPHA_OPAQUE);  /* pink, full alpha */
-    SDL_RenderDebugText(renderer, 184, 200, "I am Pink");
-    SDL_SetRenderDrawColor(renderer, 255, 255, 255, SDL_ALPHA_OPAQUE);  /* white, full alpha */
-
-    SDL_SetRenderScale(renderer, 4.0f, 4.0f);
-    SDL_RenderDebugText(renderer, 14, 65, "Game Dev II is soo cool");
-    SDL_SetRenderScale(renderer, 1.0f, 1.0f);
-
-    SDL_RenderDebugTextFormat(renderer, (float)((resX - (charsize * 46)) / 2), 400, "(This program has been running for %" SDL_PRIu64 " seconds.)", SDL_GetTicks() / 1000);
     SDL_RenderPresent(renderer);  /* put it all on the screen! */
     return SDL_APP_CONTINUE;  /* carry on with the program! */
 
