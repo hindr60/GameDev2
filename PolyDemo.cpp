@@ -9,6 +9,7 @@ void PolyDemo::DoDemo()
 	Poodle myPoodle;
 	Rottweiler myRottweiler;
 
+	cout << "Polymorphism and Inheritance Practical - Week 4" << "\n";
 	//myDog.Bark();
 	myPoodle.Bark();
 	myRottweiler.Bark();

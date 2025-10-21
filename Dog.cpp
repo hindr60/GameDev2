@@ -6,7 +6,7 @@
 
 using namespace std;
 
-void Dog::()
+/*void Dog::
 {
 	class Poodle {
 
@@ -19,7 +19,7 @@ void Dog::()
 		Rottweiler();
 
 	};
-}
+}*/
 void Dog::Bark()
 {
 	cout << "Woof! ";

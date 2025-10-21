@@ -5,5 +5,5 @@ using namespace std;
 
 void Poodle::Bark()
 {
-	cout << "I am a Poodle!" << "\n";
+	cout << "I am a Poodle! Woof!" << "\n";
 }
