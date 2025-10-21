@@ -4,6 +4,7 @@
 #include <SDL3/SDL_main.h>
 #include <iostream>
 #include "PointerDemo.h"
+#include "PolyDemo.h"
 
 using namespace std;
 
@@ -18,6 +19,8 @@ static SDL_Texture* texture = NULL;
 
 static const char* ProjectName = "JMC Starter Project";
 static PointerDemo* pointerDemo;
+//static ContainerDemo* containerDemo;
+static PolyDemo* polyDemo;
 
 /* This function runs once at startup. */
 SDL_AppResult SDL_AppInit(void** appstate, int argc, char* argv[])
@@ -35,6 +38,7 @@ SDL_AppResult SDL_AppInit(void** appstate, int argc, char* argv[])
     }
 
     pointerDemo->DoDemo();
+    polyDemo->DoDemo();
 
     return SDL_APP_CONTINUE;  /* carry on with the program! */
 }

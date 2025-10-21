@@ -132,11 +132,21 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="ContainerDemo.cpp" />
+    <ClCompile Include="Dog.cpp" />
     <ClCompile Include="JMC_SDLStarter.cpp" />
     <ClCompile Include="PointerDemo.cpp" />
+    <ClCompile Include="PolyDemo.cpp" />
+    <ClCompile Include="Poodle.cpp" />
+    <ClCompile Include="Rottweiler.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="ContainerDemo.h" />
+    <ClInclude Include="Dog.h" />
     <ClInclude Include="PointerDemo.h" />
+    <ClInclude Include="PolyDemo.h" />
+    <ClInclude Include="Poodle.h" />
+    <ClInclude Include="Rottweiler.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
