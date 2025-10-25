@@ -67,18 +67,6 @@ void PointerDemo::UsePointersDemo(int day, int day2)
 }
 void PointerDemo::MemLeakDemo()
 {
-	while (true) {
-		new int;
-
-
-		int s;
-		cout << "Enter 1 to stop the memory leak.";
-		cin >> s;
-		if (cin >> s) {
-			break;
-			cout << "My unused memory has been deleted! Yay!" << endl;
-	}
 	
-	}
 	
 }
