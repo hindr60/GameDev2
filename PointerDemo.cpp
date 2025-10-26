@@ -1,6 +1,7 @@
 #include "PointerDemo.h"
 #include <windows.h>
 #include <iostream>
+#include <Psapi.h> //gives access to the process status api functions
 
 using namespace std;
 //replaces std::
@@ -29,9 +30,6 @@ void PointerDemo::DoDemo()
 	UsePointersDemo(day, day2);
 	
 	cout << "Memory Leak Demo " << "\n";
-	//int* pointer = new int; //allocates memory constantly without storing the pointer
-	cout << "I haven't been given a delete statement, help!" << endl;
-
 	MemLeakDemo();
 
 }
@@ -65,8 +63,29 @@ void PointerDemo::UsePointersDemo(int day, int day2)
 
 
 }
+void PointerDemo::GetMemoryUsage() { //allows for the memory amount to be printed to the console
+	PROCESS_MEMORY_COUNTERS_EX pmc; //this is a structure that stores memory for statistical purposes
+	GetProcessMemoryInfo(GetCurrentProcess(), (PROCESS_MEMORY_COUNTERS*)&pmc, sizeof(pmc));
+	/*get process memory info is a windows function declared in psapi.h. 
+	get current process returns a HANDLE which is an identifier for my current program.
+	then process memory counters brings in the address of the pmc variable to the type the function expects.
+	size of pmc tells the function how large the memory is in bytes*/
+	cout << "Current memory usage: " << pmc.WorkingSetSize / 1024 << "KB/n" << endl;
+	//for easy reading, this converts the bytes to kilobytes and prints out the memory used when this function is casted.
+}
+
 void PointerDemo::MemLeakDemo()
 {
-	
-	
+	GetMemoryUsage(); //casts the memory reading function and displays it on the console.
+
+	int* pointer = new int;
+	*pointer = 2025;
+	cout << *pointer << " is the number that I have allocated!" << endl;
+	GetMemoryUsage();
+
+	delete[] pointer; //simple cleanup method and internally frees memory to be used again
+	cout << "The integer is no longer allocated!" << endl;
+	GetMemoryUsage(); 
+	//the memory value does not drop since the system "stores" the memory to be reused.
+	cout << endl;
 }

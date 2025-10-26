@@ -9,6 +9,7 @@ private:
 		void PassByRefDemo(int &firstNum, int &secondNum); //&
 		void UsePointersDemo(int day, int day2); //* pointer
 		void MemLeakDemo();
+		void GetMemoryUsage();
 	
 		
 };
